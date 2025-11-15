@@ -5,8 +5,8 @@ from pyspark.sql.types import *
 # Initialize Spark
 spark = SparkSession.builder.appName("Referral_Final_Pipeline").getOrCreate()
 
-data_path = "/Volumes/workspace/default/springercapital_data/"
-output_path = "/Volumes/workspace/default/springercapital_data/Output/referral_report/"
+data_path = "/data/"
+output_path = "/data/output"
 
 # Function to load and clean CSVs
 def load_and_clean(file):
