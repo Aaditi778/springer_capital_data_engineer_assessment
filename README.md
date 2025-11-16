@@ -24,19 +24,17 @@ This README explains:
 
 ---
 
-# 📁 Project Structure
+#  Project Structure
 
 ```
 .
-├── data/                          # Input CSV files (lead_logs, user_logs, etc.)
-├── profiling/                     # Data profiling results (CSV or Excel)
+├── data/            # Input CSV files (lead_log, user_logs, user_referrals, referral rewards,user_referral_logs,user_referral_statuses,paid_transactions etc.)              
 ├── output/
 │   └── referral_report.csv        # Final output report (46 rows expected)
-├── src/
-│   └── referral_pipeline.py       # Main processing script
+├── your_script.py                 # Main processing script
 ├── Dockerfile                     # Docker container definition
 ├── requirements.txt               # Python dependencies
-├── data_dictionary.xlsx           # Business-friendly data dictionary
+├── Springer_Capital_Data_Dictionary.xlsx           # Business-friendly data dictionary
 └── README.md                      # This file
 ```
 
@@ -118,7 +116,7 @@ docker run --rm \
 
 Loads all seven referral-related CSV files:
 
-- `lead_logs`
+- `lead_log`
 - `user_referrals`
 - `user_referral_logs`
 - `user_logs`
@@ -138,7 +136,7 @@ For each input table:
 Saved to:
 
 ```
-profiling/<table_name>_profile.csv
+
 ```
 
 ---
@@ -215,20 +213,6 @@ Writes:
 output/referral_report.csv
 ```
 
-This file contains the 21 required fields shown in the assessment:
-
-- referral_details_id  
-- referral_source  
-- referral_source_category  
-- referrer_name  
-- referrer_homeclub  
-- referee info  
-- timestamps  
-- transaction details  
-- reward_granted_at  
-- is_business_logic_valid  
-
-**Expected row count: 46**
 
 ---
 
@@ -240,14 +224,7 @@ It contains:
 
 - Column name  
 - Data type  
-- Meaning (business definition)  
+- Meaning (business definition), For non-technical team  
 - Sample value  
 - Constraints  
-- Notes for non-technical teams  
-
 ---
-
-
-
-Just tell me:  
-**“Generate Dockerfile”** or **“Generate pipeline script”**
