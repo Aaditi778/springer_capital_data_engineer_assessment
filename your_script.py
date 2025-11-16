@@ -166,6 +166,8 @@ final_df = df8.select(
     "is_business_logic_valid"
 ).dropDuplicates(["referral_id"])
 
+import os
+os.makedirs(output_path, exist_ok=True)
 # Write final CSV
 final_df.coalesce(1).write.mode("overwrite").option("header", True).csv(output_path)
 
