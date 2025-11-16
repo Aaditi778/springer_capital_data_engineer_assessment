@@ -103,10 +103,14 @@ df7 = df7.withColumn("transaction_at_ts", to_timestamp("transaction_at_local")) 
          .withColumn("membership_expired_ts", to_timestamp("membership_expired_local"))
 
 # Safe month extraction using try_cast
-df7 = df7.withColumn("transaction_month", expr("try_cast(month(transaction_at_ts) as int)")) \
-         .withColumn("referral_month", expr("try_cast(month(referral_at_ts) as int)"))
+from pyspark.sql.functions import month, to_timestamp
 
-# Business logic validation (fully null-safe)
+df7 = df7.withColumn("transaction_month",month(to_timestamp("transaction_at_ts")).cast("string")).withColumn(
+            "referral_month",
+            month(to_timestamp("referral_at_ts")).cast("string")
+        )
+
+# Business logic validation
 df8 = df7.withColumn(
     "is_business_logic_valid",
     when(
