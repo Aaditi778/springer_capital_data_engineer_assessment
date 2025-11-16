@@ -5,8 +5,8 @@ from pyspark.sql.types import *
 # Initialize Spark
 spark = SparkSession.builder.appName("Referral_Final_Pipeline").getOrCreate()
 
-data_path = "/data/"
-output_path = "/data/output"
+data_path = "data/"
+output_path = "data/Output"
 
 # Function to load and clean CSVs
 def load_and_clean(file):
@@ -103,14 +103,10 @@ df7 = df7.withColumn("transaction_at_ts", to_timestamp("transaction_at_local")) 
          .withColumn("membership_expired_ts", to_timestamp("membership_expired_local"))
 
 # Safe month extraction using try_cast
-from pyspark.sql.functions import month, to_timestamp
+df7 = df7.withColumn("transaction_month", expr("try_cast(month(transaction_at_ts) as int)")) \
+         .withColumn("referral_month", expr("try_cast(month(referral_at_ts) as int)"))
 
-df7 = df7.withColumn("transaction_month",month(to_timestamp("transaction_at_ts")).cast("string")).withColumn(
-            "referral_month",
-            month(to_timestamp("referral_at_ts")).cast("string")
-        )
-
-# Business logic validation
+# Business logic validation (fully null-safe)
 df8 = df7.withColumn(
     "is_business_logic_valid",
     when(
@@ -160,10 +156,10 @@ final_df = df8.select(
     "reward_value",
     "transaction_id",
     "transaction_status",
-    "transaction_at_local",
+    "transaction_at",
     "transaction_location",
     "transaction_type",
-    "updated_at_local",
+    "updated_at",
     "reward_created_at",
     "is_business_logic_valid"
 ).dropDuplicates(["referral_id"])
