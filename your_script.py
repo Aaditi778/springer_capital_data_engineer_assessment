@@ -103,8 +103,10 @@ df7 = df7.withColumn("transaction_at_ts", to_timestamp("transaction_at_local")) 
          .withColumn("membership_expired_ts", to_timestamp("membership_expired_local"))
 
 # Safe month extraction using try_cast
-df7 = df7.withColumn("transaction_month", expr("try_cast(month(transaction_at_ts) as int)")) \
-         .withColumn("referral_month", expr("try_cast(month(referral_at_ts) as int)"))
+df7 = df7.withColumn("transaction_at_ts", expr("try_cast(transaction_at_local AS timestamp)")) \
+         .withColumn("referral_at_ts", expr("try_cast(referral_at_local AS timestamp)")) \
+         .withColumn("membership_expired_ts", expr("try_cast(membership_expired_local AS timestamp)"))
+
 
 # Business logic validation (fully null-safe)
 df8 = df7.withColumn(
