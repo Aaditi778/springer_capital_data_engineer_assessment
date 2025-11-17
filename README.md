@@ -80,11 +80,9 @@ python src/referral_pipeline.py
 | Output File | Description |
 |------------|-------------|
 | `output/referral_report.csv` | Final report containing validity status for each referral (46 rows expected) |
-| Profiling files in `/profiling/` | Contains null count + distinct count for each table |
-
 ---
 
-# 🐳 3. Running with Docker (Recommended)
+#  3. Running with Docker (Recommended)
 
 ## Step 1 — Build Docker Image
 

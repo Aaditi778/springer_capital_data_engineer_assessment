@@ -3,15 +3,12 @@ from pyspark.sql.functions import *
 from pyspark.sql.types import *
 import sys
 
-
-
 # ============================================================
 # Initialize Spark
 # ============================================================
 spark = SparkSession.builder \
     .appName("Referral_Final_Pipeline") \
     .getOrCreate()
-
 
 # ============================================================
 # Input / Output Paths
