@@ -1,6 +1,6 @@
 # README – Springer Capital Data Engineer Take-Home Assessment
 
-## 📌 Overview
+##  Overview
 
 This project is a solution to the **Springer Capital – Data Engineer Intern Take-Home Test**.
 
@@ -29,7 +29,7 @@ This README explains:
 ```
 .
 ├── data/            # Input CSV files (lead_log, user_logs, user_referrals, referral rewards,user_referral_logs,user_referral_statuses,paid_transactions etc.)              
-├── output/
+├── output/results
 │   └── referral_report.csv        # Final output report (46 rows expected)
 ├── your_script.py                 # Main processing script
 ├── Dockerfile                     # Docker container definition
@@ -50,29 +50,9 @@ Check your Python version:
 python --version
 ```
 
----
-
-## Step 2 — Install Dependencies
-
-```
-pip install -r requirements.txt
-```
-
-The required libraries include:
-
-- pandas  
-- pyspark  
-- numpy  
+---  
 
 ---
-
-# 📦 2. Running the Pipeline Locally
-
-The script assumes all CSV files exist under the `data/` directory.
-
-## Run the script
-
-python src/referral_pipeline.py
 
 
 ## Expected Outputs
@@ -82,14 +62,14 @@ python src/referral_pipeline.py
 | `output/referral_report.csv` | Final report containing validity status for each referral (46 rows expected) |
 ---
 
-#  3. Running with Docker (Recommended)
+#  2. Running with Docker (Recommended)
 
 ## Step 1 — Build Docker Image
 
 Run inside the project directory:
 
 ```bash
-docker build -t springer-referral-app .
+docker build -t referral-app .
 ```
 
 ## Step 2 — Run the Container
@@ -131,13 +111,6 @@ For each input table:
 - Null count per column  
 - Distinct value count per column  
 
-Saved to:
-
-```
-
-```
-
----
 
 ##  3. Data Cleaning
 
@@ -208,13 +181,13 @@ Referral status = "Menunggu" or "Tidak Berhasil" and reward_value is null
 Writes:
 
 ```
-output/referral_report.csv
+output/results/referral_report.csv
 ```
 
 
 ---
 
-# 📘 Data Dictionary
+# 7 Data Dictionary
 
 A user-friendly **data_dictionary.xlsx** is included at the project root.
 
