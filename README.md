@@ -30,10 +30,11 @@ This README explains:
 .
 ├── data/            # Input CSV files (lead_log, user_logs, user_referrals, referral rewards,user_referral_logs,user_referral_statuses,paid_transactions etc.)              
 ├── output/results
-│   └── referral_report.csv        # Final output report (46 rows expected)
+│   └── results after running docker commands       # Final output report (46 rows expected)
 ├── your_script.py                 # Main processing script
 ├── Dockerfile                     # Docker container definition
 ├── Result of Data Profiling       # Word file storing result of Data profiling
+├── referral_report.csv            # The output file 
 ├── Springer_Capital_Data_Dictionary.xlsx           # Business-friendly data dictionary
 └── README.md                      # This file
 ```
