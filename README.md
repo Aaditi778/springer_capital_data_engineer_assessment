@@ -33,27 +33,12 @@ This README explains:
 │   └── referral_report.csv        # Final output report (46 rows expected)
 ├── your_script.py                 # Main processing script
 ├── Dockerfile                     # Docker container definition
-├── requirements.txt               # Python dependencies
+├── Result of Data Profiling       # Word file storing result of Data profiling
 ├── Springer_Capital_Data_Dictionary.xlsx           # Business-friendly data dictionary
 └── README.md                      # This file
 ```
 
 ---
-
-# ⚙️ 1. Environment Setup (Local Machine)
-
-## Step 1 — Install Python 3.9+
-
-Check your Python version:
-
-```bash
-python --version
-```
-
----  
-
----
-
 
 ## Expected Outputs
 
@@ -78,7 +63,7 @@ docker build -t referral-app .
 docker run --rm \
   -v "$PWD/output":/app/output \
   -v "$PWD/data":/app/data \
-  springer-referral-app
+  referral-app
 ```
 
 **Volumes ensure that:**
